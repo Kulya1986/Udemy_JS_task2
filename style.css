@@ -25,3 +25,24 @@ h3 {
     letter-spacing: 0.01em;
 
 }
+.addColor{
+    margin: 2rem;
+    padding: .3rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font: 600 1rem 'Raleway', sans-serif;
+    color: rgba(0,0,0,.7);
+    background-color: rgb(255 228 196);
+    border: 0.2em outset rgba(0,0,0,.7);;
+}
+.addColor:hover{
+    cursor: pointer;
+    background-color: rgb(255, 209, 153);
+}
+.addColor:disabled {
+    background-color: #aaa;
+  }
+.addColor:disabled:hover {
+    cursor: auto;
+    background-color: #aaa;
+  }
