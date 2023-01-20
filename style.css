@@ -29,7 +29,7 @@ h3 {
     margin: 2rem;
     padding: .3rem 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     font: 600 1rem 'Raleway', sans-serif;
     color: rgba(0,0,0,.7);
     background-color: rgb(255 228 196);
@@ -41,8 +41,24 @@ h3 {
 }
 .addColor:disabled {
     background-color: #aaa;
+    color: rgba(0,0,0,.3);
   }
 .addColor:disabled:hover {
     cursor: auto;
     background-color: #aaa;
+    color: rgba(0,0,0,.3);
+  }
+  .colorsPallette{
+    letter-spacing: normal;
+  }
+  .colorsPallette__color{
+    margin: 1em 1.2em;
+  }
+  .colorsPallette__remove{
+    text-transform: none;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  .colorsPallette__remove:hover{
+    cursor: pointer;
   }
