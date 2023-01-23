@@ -1,12 +1,5 @@
 var inputColor1 = document.querySelectorAll(".colorsPallette input")[0];
 var inputColor2 = document.querySelectorAll(".colorsPallette input")[1];
-var removeImg1 = document.querySelectorAll(".colorsPallette img")[0];
-var removeImg2 = document.querySelectorAll(".colorsPallette img")[1];
-console.log(removeImg1);
-console.log("OK");
-console.log(removeImg2);
-
-
 var h3CSS = document.querySelector("h3"); 
 var body = document.querySelector("body");
 var addButton = document.querySelector(".addColor");
@@ -31,10 +24,8 @@ function addMoreColor(){
     var colorSection=document.querySelector(".colorsPallette");
     colorSection.appendChild(createColorInput());
     colorSection.appendChild(createColorRemove());
-    if (document.querySelectorAll(".colorsPallette input").length>=4)
-    {
-        addButton.setAttribute("disabled", "");
-    }
+    setGradient();
+    checkQuantityOfColors();
 }
 
 function createColorInput(){
@@ -43,7 +34,8 @@ function createColorInput(){
     inputColor.setAttribute("type","color");
     inputColor.setAttribute("name","color"+n);
     inputColor.setAttribute("class","colorsPallette__color");
-    inputColor.setAttribute("value","#ff0000");
+    if (n===3) inputColor.setAttribute("value","#0000ff");
+    if (n===4) inputColor.setAttribute("value","#ffff00");
     inputColor.addEventListener("input",setGradient);
     return inputColor;
 }
@@ -54,18 +46,29 @@ function createColorRemove(){
     imgRemove.setAttribute("alt","remove");
     imgRemove.setAttribute("class","colorsPallette__remove");
     imgRemove.addEventListener("click",removeColorInput);
-    // inputColor.addEventListener("input",setGradient);
     return imgRemove;
 }
 
 function removeColorInput(){
     this.parentNode.removeChild(this.previousElementSibling);
     this.parentNode.removeChild(this);
+    checkQuantityOfColors();
+    setGradient();
+}
+
+function checkQuantityOfColors(){
+    var colorsSet = document.querySelectorAll(".colorsPallette input");
+    if (colorsSet.length>=4 && addButton.getAttribute("disabled")===null)
+    {
+        addButton.setAttribute("disabled", "");
+    }
+    else if (colorsSet.length>0 && addButton.getAttribute("disabled")!==null){
+        addButton.removeAttribute("disabled");
+    }
+
 }
 
 window.addEventListener("load",setGradient);
 inputColor1.addEventListener("input", setGradient);
 inputColor2.addEventListener("input", setGradient);
-removeImg1.addEventListener("click", removeColorInput);
-removeImg2.addEventListener("click", removeColorInput);
 addButton.addEventListener("click", addMoreColor);
