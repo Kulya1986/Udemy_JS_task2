@@ -1,5 +1,12 @@
 var inputColor1 = document.querySelectorAll(".colorsPallette input")[0];
 var inputColor2 = document.querySelectorAll(".colorsPallette input")[1];
+var removeImg1 = document.querySelectorAll(".colorsPallette img")[0];
+var removeImg2 = document.querySelectorAll(".colorsPallette img")[1];
+console.log(removeImg1);
+console.log("OK");
+console.log(removeImg2);
+
+
 var h3CSS = document.querySelector("h3"); 
 var body = document.querySelector("body");
 var addButton = document.querySelector(".addColor");
@@ -46,12 +53,19 @@ function createColorRemove(){
     imgRemove.setAttribute("src","images/remove.png");
     imgRemove.setAttribute("alt","remove");
     imgRemove.setAttribute("class","colorsPallette__remove");
+    imgRemove.addEventListener("click",removeColorInput);
     // inputColor.addEventListener("input",setGradient);
     return imgRemove;
 }
 
+function removeColorInput(){
+    this.parentNode.removeChild(this.previousElementSibling);
+    this.parentNode.removeChild(this);
+}
 
 window.addEventListener("load",setGradient);
 inputColor1.addEventListener("input", setGradient);
 inputColor2.addEventListener("input", setGradient);
+removeImg1.addEventListener("click", removeColorInput);
+removeImg2.addEventListener("click", removeColorInput);
 addButton.addEventListener("click", addMoreColor);
