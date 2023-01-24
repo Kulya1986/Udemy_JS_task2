@@ -8,12 +8,23 @@
 </head>
 <body>
     <h1>Background Generator</h1>
+    <div class="dirSelectBlock">
+        <label for="direction">Gradient direction</label><br>
+        <p class="up">0&deg;&darr;</p>
+        <p class="left" style="display: inline;">270&deg;&rarr;</p>
+        <input type="text" style = "display: inline;" name="direction" id="#gradDirection" min="0" max="360" value="90" size="5">
+        <p class="right" style="display: inline;">90&deg;&larr;</p>
+        <p class="down">180&deg;&uarr;</p>
+    </div>
+    <hr>
     <button class="addColor">Add color</button><br>
     <div class="colorsPallette">
+        <label for="color1">Color 1</label>
         <input type="color" name="color1" class = "colorsPallette__color" value="#00ff00">
-        <!-- <img src="images/remove.png" alt="remove" class="colorsPallette__remove"> -->
+        <input type="range" name="alpha1" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255"><br>
+        <label for="color2">Color 2</label>
         <input type="color" name="color2" class = "colorsPallette__color" value="#ff0000">
-        <!-- <img src="images/remove.png" alt="remove" class="colorsPallette__remove"> -->
+        <input type="range" name="alpha2" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255">
     </div>
   
     <h2>Current CSS background</h2>

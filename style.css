@@ -25,6 +25,9 @@ h3 {
     letter-spacing: 0.01em;
 
 }
+label{
+    font: 900 1em 'Raleway', sans-serif; 
+}
 .addColor{
     margin: 2rem;
     padding: .3rem 1.5rem;
@@ -33,11 +36,13 @@ h3 {
     font: 600 1rem 'Raleway', sans-serif;
     color: rgba(0,0,0,.7);
     background-color: rgb(255 228 196);
-    border: 0.2em outset rgba(0,0,0,.7);;
+    border: 0.2em outset rgba(0,0,0,.7);
+    border-radius: 8px;
 }
 .addColor:hover{
     cursor: pointer;
     background-color: rgb(255, 209, 153);
+    border-color: rgba(0, 0, 0, 0.8);
 }
 .addColor:disabled {
     background-color: #aaa;
@@ -47,6 +52,7 @@ h3 {
     cursor: auto;
     background-color: #aaa;
     color: rgba(0,0,0,.3);
+    border-color: rgba(0,0,0,.7);
   }
   .colorsPallette{
     letter-spacing: normal;
@@ -61,4 +67,13 @@ h3 {
   }
   .colorsPallette__remove:hover{
     cursor: pointer;
+  }
+  .dirSelectBlock + hr{
+    width: 20%;
+    border: 0.2rem solid rgb(250, 235, 215);
+    border-radius: 8px;
+    background: rgb(250, 235, 215);
+  }
+  .dirSelectBlock{
+    display: grid;
   }
