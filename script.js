@@ -1,18 +1,22 @@
-var inputColor1 = document.querySelectorAll(".colorsPallette input")[0];
-var inputColor2 = document.querySelectorAll(".colorsPallette input")[1];
+var inputColor1 = document.querySelectorAll(".colorsPallette .colorsPallette__color")[0];
+var inputColor2 = document.querySelectorAll(".colorsPallette .colorsPallette__color")[1];
+var inputColor1Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[0];
+var inputColor2Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[1];
 var h3CSS = document.querySelector("h3"); 
 var body = document.querySelector("body");
 var addButton = document.querySelector(".addColor");
 
 function setGradient(){
-    var colorsSet = document.querySelectorAll(".colorsPallette input");
-    var l = document.querySelectorAll(".colorsPallette input").length;
+    var colorsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color");
+    var colorSetAlpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha");
+    var l = document.querySelectorAll(".colorsPallette .colorsPallette__color").length;
     var backgroundStyleString = "linear-gradient(to right";
     var i=0;
     while (i<l)
     {
         backgroundStyleString +=", ";
-        backgroundStyleString += colorsSet[i].value;
+        backgroundStyleString +=colorsSet[i].value;
+        backgroundStyleString +=parseInt(colorSetAlpha[i].value).toString(16);
         i++;
     }
     backgroundStyleString +=")";
@@ -22,15 +26,26 @@ function setGradient(){
 
 function addMoreColor(){
     var colorSection=document.querySelector(".colorsPallette");
+    colorSection.appendChild(document.createElement("br"));
+    colorSection.appendChild(creatColorLabel());
     colorSection.appendChild(createColorInput());
+    colorSection.appendChild(createColorAlphaBar());
     colorSection.appendChild(createColorRemove());
     setGradient();
     checkQuantityOfColors();
 }
 
+function creatColorLabel(){
+    var colorLabel = document.createElement("label");
+    var n = document.querySelectorAll(".colorsPallette .colorsPallette__color").length+1;
+    colorLabel.setAttribute("for","color"+n);
+    colorLabel.textContent = "Color "+n;
+    return colorLabel
+}
+
 function createColorInput(){
     var inputColor = document.createElement("input");
-    var n = document.querySelectorAll(".colorsPallette input").length+1;
+    var n = document.querySelectorAll(".colorsPallette .colorsPallette__color").length+1;
     inputColor.setAttribute("type","color");
     inputColor.setAttribute("name","color"+n);
     inputColor.setAttribute("class","colorsPallette__color");
@@ -49,15 +64,33 @@ function createColorRemove(){
     return imgRemove;
 }
 
+function createColorAlphaBar(){
+    var alphaBar = document.createElement("input");
+    var n = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha").length+1;
+    alphaBar.setAttribute("type","range");
+    alphaBar.setAttribute("name","alpha"+n);
+    alphaBar.setAttribute("class","colorsPallette__color__alpha");
+    alphaBar.setAttribute("min","0");
+    alphaBar.setAttribute("max","255");
+    alphaBar.setAttribute("value","255");
+    alphaBar.setAttribute("title","Alpha");
+    alphaBar.addEventListener("input",setGradient);
+    return alphaBar;
+}
+
 function removeColorInput(){
-    this.parentNode.removeChild(this.previousElementSibling);
+    var i=4;
+    while (i>0){
+        this.parentNode.removeChild(this.previousElementSibling);
+        i--;
+    }
     this.parentNode.removeChild(this);
     checkQuantityOfColors();
     setGradient();
 }
 
 function checkQuantityOfColors(){
-    var colorsSet = document.querySelectorAll(".colorsPallette input");
+    var colorsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color");
     if (colorsSet.length>=4 && addButton.getAttribute("disabled")===null)
     {
         addButton.setAttribute("disabled", "");
@@ -65,10 +98,11 @@ function checkQuantityOfColors(){
     else if (colorsSet.length>0 && addButton.getAttribute("disabled")!==null){
         addButton.removeAttribute("disabled");
     }
-
 }
 
 window.addEventListener("load",setGradient);
 inputColor1.addEventListener("input", setGradient);
 inputColor2.addEventListener("input", setGradient);
+inputColor1Alpha.addEventListener("input",setGradient);
+inputColor2Alpha.addEventListener("input",setGradient);
 addButton.addEventListener("click", addMoreColor);
