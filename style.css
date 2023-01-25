@@ -29,7 +29,7 @@ label{
     font: 900 1em 'Raleway', sans-serif; 
 }
 .addColor{
-    margin: 2rem;
+    margin: 1.7rem;
     padding: .3rem 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -68,12 +68,34 @@ label{
   .colorsPallette__remove:hover{
     cursor: pointer;
   }
+  .dirSelectBlock{
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 1rem;
+    margin: 2rem;
+    letter-spacing: .2em;
+  }
   .dirSelectBlock + hr{
     width: 20%;
     border: 0.2rem solid rgb(250, 235, 215);
     border-radius: 8px;
     background: rgb(250, 235, 215);
   }
-  .dirSelectBlock{
-    display: grid;
+  .dirSelectBlock .up, .dirSelectBlock .down{
+    grid-column: 1/4;
+    justify-self: center;
+  }
+  .dirSelectBlock .left{
+    justify-self: end;
+    align-self: center;
+  }
+  .dirSelectBlock .right{
+    justify-self: start;
+    align-self: center;
+  }
+
+  #gradDirection{
+    font: 600 1rem 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-align: center;
   }

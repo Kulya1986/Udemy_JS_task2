@@ -2,6 +2,7 @@ var inputColor1 = document.querySelectorAll(".colorsPallette .colorsPallette__co
 var inputColor2 = document.querySelectorAll(".colorsPallette .colorsPallette__color")[1];
 var inputColor1Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[0];
 var inputColor2Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[1];
+var inputDirection = document.getElementById('gradDirection');
 var h3CSS = document.querySelector("h3"); 
 var body = document.querySelector("body");
 var addButton = document.querySelector(".addColor");
@@ -10,7 +11,7 @@ function setGradient(){
     var colorsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color");
     var colorSetAlpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha");
     var l = document.querySelectorAll(".colorsPallette .colorsPallette__color").length;
-    var backgroundStyleString = "linear-gradient(to right";
+    var backgroundStyleString = "linear-gradient("+inputDirection.value+"deg";
     var i=0;
     while (i<l)
     {
@@ -105,4 +106,5 @@ inputColor1.addEventListener("input", setGradient);
 inputColor2.addEventListener("input", setGradient);
 inputColor1Alpha.addEventListener("input",setGradient);
 inputColor2Alpha.addEventListener("input",setGradient);
+inputDirection.addEventListener("input", setGradient);
 addButton.addEventListener("click", addMoreColor);
