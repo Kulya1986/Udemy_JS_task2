@@ -8,13 +8,13 @@
 </head>
 <body>
     <h1>Background Generator</h1>
+    <label for="direction">Gradient direction</label>
     <div class="dirSelectBlock">
-        <label for="direction">Gradient direction</label><br>
-        <p class="up">0&deg;&darr;</p>
-        <p class="left" style="display: inline;">270&deg;&rarr;</p>
-        <input type="text" style = "display: inline;" name="direction" id="#gradDirection" min="0" max="360" value="90" size="5">
-        <p class="right" style="display: inline;">90&deg;&larr;</p>
-        <p class="down">180&deg;&uarr;</p>
+        <div class="up">0&deg;&darr;</div>
+        <div class="left">270&deg;&rarr;</div>
+        <input type="text" name="direction" id="gradDirection" min="0" max="360" value="90" size="3">
+        <div class="right">&larr;90&deg;</div>
+        <div class="down">180&deg;&uarr;</div>
     </div>
     <hr>
     <button class="addColor">Add color</button><br>
