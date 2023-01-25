@@ -56,10 +56,13 @@ label{
   }
   .colorsPallette{
     letter-spacing: normal;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+    gap: 1.5rem 4rem;
   }
-  .colorsPallette__color{
+  /* .colorsPallette__color{
     margin: 1em 1.2em;
-  }
+  } */
   .colorsPallette__remove{
     text-transform: none;
     width: 1.3rem;
