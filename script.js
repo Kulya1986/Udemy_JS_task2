@@ -27,21 +27,21 @@ function setGradient(){
 
 function addMoreColor(){
     var colorSection=document.querySelector(".colorsPallette");
-    colorSection.appendChild(document.createElement("br"));
-    colorSection.appendChild(creatColorLabel());
-    colorSection.appendChild(createColorInput());
-    colorSection.appendChild(createColorAlphaBar());
-    colorSection.appendChild(createColorRemove());
+    var boxColor = createBoxContainer(), boxAlpha = createBoxContainer(), boxPercent = createBoxContainer(), boxRemove = createBoxContainer();
+    boxColor.appendChild(createColorInput());
+    boxAlpha.appendChild(createColorAlphaBar());
+    boxPercent.appendChild(createColorPercentageBar());
+    boxRemove.appendChild(createColorRemove());
+    colorSection.appendChild(boxColor);
+    colorSection.appendChild(boxAlpha);
+    colorSection.appendChild(boxPercent);
+    colorSection.appendChild(boxRemove);
     setGradient();
     checkQuantityOfColors();
 }
-
-function creatColorLabel(){
-    var colorLabel = document.createElement("label");
-    var n = document.querySelectorAll(".colorsPallette .colorsPallette__color").length+1;
-    colorLabel.setAttribute("for","color"+n);
-    colorLabel.textContent = "Color "+n;
-    return colorLabel
+function createBoxContainer(){
+    var divBox = document.createElement("div");
+    return divBox;
 }
 
 function createColorInput(){
@@ -79,13 +79,28 @@ function createColorAlphaBar(){
     return alphaBar;
 }
 
+function createColorPercentageBar(){
+    var percentBar = document.createElement("input");
+    var n = document.querySelectorAll(".colorsPallette .colorsPallette__color__percent").length+1;
+    percentBar.setAttribute("type","range");
+    percentBar.setAttribute("name","percent"+n);
+    percentBar.setAttribute("class","colorsPallette__color__percent");
+    percentBar.setAttribute("min","0");
+    percentBar.setAttribute("max","100");
+    percentBar.setAttribute("value","0");
+    percentBar.setAttribute("title","Percentage");
+    percentBar.addEventListener("input",setGradient);
+    return percentBar;
+}
+
 function removeColorInput(){
-    var i=4;
+    var i=3;
+    var divBox = this.parentNode;
     while (i>0){
-        this.parentNode.removeChild(this.previousElementSibling);
+        divBox.parentNode.removeChild(divBox.previousElementSibling);
         i--;
     }
-    this.parentNode.removeChild(this);
+    divBox.parentNode.removeChild(divBox);
     checkQuantityOfColors();
     setGradient();
 }
