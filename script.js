@@ -46,6 +46,7 @@ function addMoreColor(){
     setGradient();
     checkQuantityOfColors();
 }
+
 function createBoxContainer(){
     var divBox = document.createElement("div");
     return divBox;
