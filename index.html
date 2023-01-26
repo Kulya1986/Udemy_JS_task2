@@ -12,19 +12,39 @@
     <div class="dirSelectBlock">
         <div class="up">0&deg;&uarr;</div>
         <div class="left">270&deg;&larr;</div>
-        <input type="text" name="direction" id="gradDirection" min="0" max="360" value="90" size="3">
+        <input type="text" name="direction" id="gradDirection" min="0" max="360" value="90" size="3" maxlength="3">
         <div class="right">&rarr;90&deg;</div>
         <div class="down">180&deg;&darr;</div>
     </div>
     <hr>
     <button class="addColor">Add color</button><br>
     <div class="colorsPallette">
-        <label for="color1">Color 1</label>
-        <input type="color" name="color1" class = "colorsPallette__color" value="#00ff00">
-        <input type="range" name="alpha1" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255"><br>
-        <label for="color2">Color 2</label>
-        <input type="color" name="color2" class = "colorsPallette__color" value="#ff0000">
-        <input type="range" name="alpha2" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255">
+        <div class="colorsPallette__tableHeader">Colors</div>
+        <div class="colorsPallette__tableHeader">Alpha</div>
+        <div class="colorsPallette__tableHeader">Percentage</div>
+        <div class="colorsPallette__tableHeader"></div>
+        <!-- <label for="color1">Color 1</label> -->
+        <div>
+            <input type="color" name="color1" class = "colorsPallette__color" value="#00ff00">
+        </div>
+        <div>
+            <input type="range" name="alpha1" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255">
+        </div>
+        <div>
+            <input type="range" name="percent1" class="colorsPallette__color__percent" min="0" max="100" title="Percentage" value="50">
+        </div>
+        <div></div>
+        <!-- <label for="color2">Color 2</label> -->
+        <div>
+            <input type="color" name="color2" class = "colorsPallette__color" value="#ff0000">
+        </div>
+        <div>
+            <input type="range" name="alpha2" class="colorsPallette__color__alpha" min="0" max="255" title="Alpha" value="255">
+        </div>
+        <div>
+            <input type="range" name="percent2" class="colorsPallette__color__percent" min="0" max="100" title="Percentage" value="100">
+        </div>
+        <div></div>
     </div>
   
     <h2>Current CSS background</h2>

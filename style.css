@@ -56,9 +56,15 @@ label{
   }
   .colorsPallette{
     letter-spacing: normal;
+    display: grid;
+    grid-template-columns: 0.2fr 0.5fr 0.5fr 0.1fr;
+    gap: 1.5rem 3rem;
   }
   .colorsPallette__color{
-    margin: 1em 1.2em;
+    width: 4.5rem;
+  }
+  .colorsPallette__color__alpha, .colorsPallette__color__percent{
+    width: 12rem;
   }
   .colorsPallette__remove{
     text-transform: none;
