@@ -2,6 +2,8 @@ var inputColor1 = document.querySelectorAll(".colorsPallette .colorsPallette__co
 var inputColor2 = document.querySelectorAll(".colorsPallette .colorsPallette__color")[1];
 var inputColor1Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[0];
 var inputColor2Alpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha")[1];
+var inputColor1Percent = document.querySelectorAll(".colorsPallette .colorsPallette__color__percent")[0];
+var inputColor2Percent = document.querySelectorAll(".colorsPallette .colorsPallette__color__percent")[1];
 var inputDirection = document.getElementById('gradDirection');
 var h3CSS = document.querySelector("h3"); 
 var body = document.querySelector("body");
@@ -10,6 +12,7 @@ var addButton = document.querySelector(".addColor");
 function setGradient(){
     var colorsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color");
     var colorSetAlpha = document.querySelectorAll(".colorsPallette .colorsPallette__color__alpha");
+    var colorSetPercent = document.querySelectorAll(".colorsPallette .colorsPallette__color__percent");
     var l = document.querySelectorAll(".colorsPallette .colorsPallette__color").length;
     var backgroundStyleString = "linear-gradient("+inputDirection.value+"deg";
     var i=0;
@@ -18,6 +21,9 @@ function setGradient(){
         backgroundStyleString +=", ";
         backgroundStyleString +=colorsSet[i].value;
         backgroundStyleString +=parseInt(colorSetAlpha[i].value).toString(16);
+        backgroundStyleString +=" ";
+        backgroundStyleString +=colorSetPercent[i].value;
+        backgroundStyleString +="%";
         i++;
     }
     backgroundStyleString +=")";
@@ -36,6 +42,7 @@ function addMoreColor(){
     colorSection.appendChild(boxAlpha);
     colorSection.appendChild(boxPercent);
     colorSection.appendChild(boxRemove);
+    colorPercentageDependenciesOnAdd();
     setGradient();
     checkQuantityOfColors();
 }
@@ -105,6 +112,21 @@ function removeColorInput(){
     setGradient();
 }
 
+function colorPercentageDependenciesOnAdd(){
+    var percentBarsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color__percent");
+    var colorsAmount = percentBarsSet.length;
+    if (colorsAmount===3) percentBarsSet.forEach((element,i) => {
+        if (i===0) element.value=33;
+        else element.value=33+i*33;
+        console.log(element);
+    });
+    if (colorsAmount===4) percentBarsSet.forEach((element,i) => {
+        if (i===0) element.value=25;
+        else element.value=25+i*25;
+        console.log(element);
+    });
+}
+
 function checkQuantityOfColors(){
     var colorsSet = document.querySelectorAll(".colorsPallette .colorsPallette__color");
     if (colorsSet.length>=4 && addButton.getAttribute("disabled")===null)
@@ -121,5 +143,7 @@ inputColor1.addEventListener("input", setGradient);
 inputColor2.addEventListener("input", setGradient);
 inputColor1Alpha.addEventListener("input",setGradient);
 inputColor2Alpha.addEventListener("input",setGradient);
+inputColor1Percent.addEventListener("input", setGradient);
+inputColor2Percent.addEventListener("input", setGradient);
 inputDirection.addEventListener("input", setGradient);
 addButton.addEventListener("click", addMoreColor);
