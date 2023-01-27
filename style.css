@@ -55,6 +55,8 @@ label{
     border-color: rgba(0,0,0,.7);
   }
   .colorsPallette{
+    max-width: 800px;
+    margin: auto;
     letter-spacing: normal;
     display: grid;
     grid-template-columns: 0.2fr 0.5fr 0.5fr 0.1fr;
